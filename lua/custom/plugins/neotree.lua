@@ -1,17 +1,17 @@
-vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
+vim.cmd [[ let g:neo_tree_remove_legacy_commands = 1 ]]
 
 return {
-  "nvim-neo-tree/neo-tree.nvim",
-  version = "*",
+  'nvim-neo-tree/neo-tree.nvim',
+  version = '*',
   dependencies = {
-    "nvim-lua/plenary.nvim",
-    "nvim-tree/nvim-web-devicons",
-    "MunifTanjim/nui.nvim",
+    'nvim-lua/plenary.nvim',
+    'nvim-tree/nvim-web-devicons',
+    'MunifTanjim/nui.nvim',
   },
   config = function()
     require('neo-tree').setup {
-      close_if_last_window = true,
-      popup_border_style = "rounded",
+      close_if_last_window = false,
+      popup_border_style = 'rounded',
       enable_git_status = true,
       enable_diagnostics = false,
       default_component_configs = {
@@ -27,22 +27,21 @@ return {
         follow_current_file_enabled = true,
         use_libuv_file_watcher = true,
       },
+      window = {
+        position = 'Right',
+      },
       event_handlers = {
         {
-          event = "file_opened",
+          event = 'file_opened',
           handler = function()
-            require("neo-tree").close_all()
+            require('neo-tree').close_all()
           end,
         },
       },
       mappings = {
-        ["<CR>"] = "open",
-        ["<2-LeftMouse>"] = "open",
-        ["<2-RightMouse>"] = "open_with_window_picker",
-        ["<Right>"] = "open_node",
-        ["<Left>"] = "close_node",
-        ["."] = "toggle_hidden",
-        ["R"] = "refresh",
+        ['<CR>'] = 'open',
+        ['.'] = 'toggle_hidden',
+        ['R'] = 'refresh',
       },
     }
     vim.keymap.set('n', '<C-e>', ':Neotree toggle filesystem reveal right<CR>')
