@@ -22,7 +22,10 @@ return {
       filesystem = {
         filtered_items = {
           hide_dotfiles = false,
-          hide_gitignored = true,
+          hide_gitignored = false,
+          never_show_by_pattern = {
+            "*node_modules*"
+          },
         },
         follow_current_file_enabled = true,
         use_libuv_file_watcher = true,
